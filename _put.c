@@ -2,13 +2,13 @@
 
 /**
  * _puts - fonction puts
- * @st: string 
+ * @st: string
  *
  * Return: void
  */
 int _puts(char *st)
 {
-	char *b =st;
+	char *b = st;
 
 	while (*st)
 		_putchar(*st++);
@@ -24,6 +24,7 @@ int _puts(char *st)
 int _putchar(int c)
 {
 	static int i;
+
 	static char buf(OUTPUT_BUF_SIZE);
 
 	if (c == BUF_FLUSH || i >= OUTPUT_BUF_SIZE)
