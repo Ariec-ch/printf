@@ -32,7 +32,7 @@
  * @prec: field prec specified
  * 
  * @h_modifier: h modif specified
- * @l_modifier: l odif spec
+ * @l_modifier: l modif spec
  *
  */
 typedef struct parameters
@@ -65,7 +65,7 @@ typedef struct specifier
 } specifier_t;
 
 /* _put.c module */
-int _puts(char *str);
+int _puts(char *st);
 int _putchar(int c);
 
 /* print_functions.c module */
@@ -81,7 +81,7 @@ int print_unsigned(va_list ao, params_t *params);
 int print_address(va_list ao, params_t *params);
 
 /* specifier.c module */
-int (*get_specifier(char *s))(va_list ao, params_t *params);
+int (*get_spec(char *s))(va_list ao, params_t *params);
 int get_print_func(char *s, va_list ao, params_t *params);
 inr get_fl(char *s, params_t *params);
 int get_modifier(char *s, params_t *params);

@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	int sm = 0;
 	va_list ao;
-	char *j, *start;
+	char *p, *start;
 	params_t params = PARAMS_INIT;
 
 	va_start(aon, format);
@@ -20,29 +20,29 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
-	for (j = (char *) format; *j; j++)
+	for (p = (char *) format; *p; p++)
 	{
 		init _params(&params, ao);
-		if (*j != '%')
+		if (*p != '%')
 		{
-			sm += _putchar(*j);
+			sm += _putchar(*p);
 			continue;
 		}
-		start = j;
-		j++;
-		while (get_flag(j, &params)) /*while char at j is flag char */
+		start = p;
+		p++;
+		while (get_fl(p, &params)) /*while char at p is flag char */
 		{
-			j++; /* next char */
+			p++; /* next char */
 		}
-		j = get_width(j, &params, ao);
-		j = get_precision(j, &params, ao);
-		if (get_modifier(j, &params))
-			j++;
-		if (!get_specifier(j))
-			sm += print_from_to(start, j,
-					params.l_modifier || params.h_modifier ? j - 1 : 0);
+		p = get_idth(p, &params, ao);
+		p = get_prec(p, &params, ao);
+		if (get_modifier(p, &params))
+			p++;
+		if (!get_specifier(p))
+			sm += print_from_to(start, p,
+					params.l_modifier || params.h_modifier ? p - 1 : 0);
 		else
-			sm += get_print_func(j, ao, &params);
+			sm += get_print_func(p, ao, &params);
 	}
 	_putchar(BUF_FLUSH);
 	va_end(ao);
