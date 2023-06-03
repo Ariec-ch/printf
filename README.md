@@ -1,1 +1,2 @@
-# printf
+#!/bin/bash
+printf
